@@ -103,4 +103,9 @@ class AuthController extends GetxController {
       return false; // Indicate login failure
     }
   }
+
+  RxBool isPasswordVisible = true.obs;
+  void togglePasswordVisibility() {
+    isPasswordVisible.toggle();
+  }
 }

@@ -12,10 +12,10 @@ class SearchPageView extends StatefulWidget {
   const SearchPageView({Key? key}) : super(key: key);
 
   @override
-  _SearchPageViewState createState() => _SearchPageViewState();
+  SearchPageViewState createState() => SearchPageViewState();
 }
 
-class _SearchPageViewState extends State<SearchPageView> {
+class SearchPageViewState extends State<SearchPageView> {
   final SearchPageController controller = Get.put(SearchPageController());
 
   @override
@@ -23,6 +23,11 @@ class _SearchPageViewState extends State<SearchPageView> {
     return SafeArea(
       child: Scaffold(
         backgroundColor: cCreamColor,
+        appBar: AppBar(
+          backgroundColor: cDarkGreenColor,
+          title: const Text('Cari Data'),
+          centerTitle: true,
+        ),
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -55,7 +60,7 @@ class _SearchPageViewState extends State<SearchPageView> {
                 height: 60.0,
                 child: TextField(
                   controller: controller.searchController,
-                  onChanged: (value) {
+                  onSubmitted: (value) {
                     setState(() {
                       controller.updateSearchQuery(value);
                     });
