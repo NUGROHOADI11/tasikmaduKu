@@ -243,6 +243,15 @@ class AddDataView extends GetView<AddDataController> {
               const SizedBox(
                 height: 20,
               ),
+              MyTextField(
+                  icon: const Icon(Icons.book),
+                  textInputType: TextInputType.text,
+                  controller: controller.catatanController,
+                  hintText: "Catatan",
+                  obscureText: false),
+              const SizedBox(
+                height: 20,
+              ),
               Text(
                 "Data Ayah",
                 style: GoogleFonts.poppins(
@@ -278,7 +287,7 @@ class AddDataView extends GetView<AddDataController> {
                 height: 20,
               ),
               MyTextField(
-                  icon: const Icon(Icons.bug_report),
+                  icon: const Icon(Icons.book_outlined),
                   textInputType: TextInputType.text,
                   controller: controller.riwayatPenyakitAyahController,
                   hintText: "Riwayat Penyakit Ayah",
@@ -321,7 +330,7 @@ class AddDataView extends GetView<AddDataController> {
                 height: 20,
               ),
               MyTextField(
-                  icon: const Icon(Icons.bug_report),
+                  icon: const Icon(Icons.book_outlined),
                   textInputType: TextInputType.text,
                   controller: controller.riwayatPenyakitIbuController,
                   hintText: "Riwayat Penyakit Ibu",
@@ -354,6 +363,7 @@ class AddDataView extends GetView<AddDataController> {
                         controller.beratController.text.isNotEmpty &&
                         controller.lingkarKepalaController.text.isNotEmpty &&
                         controller.lingkarLenganController.text.isNotEmpty &&
+                        controller.catatanController.text.isNotEmpty &&
                         controller.namaAyahController.text.isNotEmpty &&
                         controller.pekerjaanAyahController.text.isNotEmpty &&
                         controller
@@ -367,13 +377,14 @@ class AddDataView extends GetView<AddDataController> {
                           controller.kkController.text,
                           controller.namaAnakController.text,
                           controller.tempatLahirController.text,
-                          controller.selectedDate.value.toString(),
+                          '${controller.selectedDate.value.day}-${controller.selectedDate.value.month}-${controller.selectedDate.value.year}',
                           int.parse(controller.umurController.text),
                           controller.alamatController.text,
                           double.parse(controller.tinggiController.text),
                           double.parse(controller.beratController.text),
                           double.parse(controller.lingkarKepalaController.text),
                           double.parse(controller.lingkarLenganController.text),
+                          controller.catatanController.text,
                           controller.namaAyahController.text,
                           controller.pekerjaanAyahController.text,
                           controller.riwayatPenyakitAyahController.text,

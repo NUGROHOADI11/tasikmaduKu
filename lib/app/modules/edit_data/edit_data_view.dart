@@ -23,27 +23,32 @@ class EditDataView extends GetView<EditDataController> {
             if (snapshot.connectionState == ConnectionState.done) {
               var data = snapshot.data!.data() as Map<String, dynamic>;
 
-              controller.nikController.text = data["nik"];
-              controller.kkController.text = data["kk"];
-              controller.namaAnakController.text = data["namaAnak"];
-              controller.tempatLahirController.text = data["tempatLahir"];
-              controller.tanggalLahirController.text = data["tanggalLahir"];
-              controller.umurController.text = data["umur"].toString();
-              controller.alamatController.text = data["alamat"];
-              controller.tinggiController.text = data["tinggi"].toString();
-              controller.beratController.text = data["berat"].toString();
+              controller.nikController.text = data["nik"] ?? '';
+              controller.kkController.text = data["kk"] ?? '';
+              controller.namaAnakController.text = data["namaAnak"] ?? '';
+              controller.tempatLahirController.text = data["tempatLahir"] ?? '';
+              controller.tanggalLahirController.text =
+                  data["tanggalLahir"] ?? '';
+              controller.umurController.text = data["umur"]?.toString() ?? '';
+              controller.alamatController.text = data["alamat"] ?? '';
+              controller.tinggiController.text =
+                  data["tinggi"]?.toString() ?? '';
+              controller.beratController.text = data["berat"]?.toString() ?? '';
               controller.lingkarKepalaController.text =
-                  data["lingkarKepala"].toString();
+                  data["lingkarKepala"]?.toString() ?? '';
               controller.lingkarLenganController.text =
-                  data["lingkarLengan"].toString();
-              controller.namaAyahController.text = data["namaAyah"];
-              controller.pekerjaanAyahController.text = data["pekerjaanAyah"];
+                  data["lingkarLengan"]?.toString() ?? '';
+              controller.catatanController.text = data["catatan"] ?? '';
+              controller.namaAyahController.text = data["namaAyah"] ?? '';
+              controller.pekerjaanAyahController.text =
+                  data["pekerjaanAyah"] ?? '';
               controller.riwayatPenyakitAyahController.text =
-                  data["riwayatPenyakitAyah"];
-              controller.namaIbuController.text = data["namaIbu"];
-              controller.pekerjaanIbuController.text = data["pekerjaanIbu"];
+                  data["riwayatPenyakitAyah"] ?? '';
+              controller.namaIbuController.text = data["namaIbu"] ?? '';
+              controller.pekerjaanIbuController.text =
+                  data["pekerjaanIbu"] ?? '';
               controller.riwayatPenyakitIbuController.text =
-                  data["riwayatPenyakitIbu"];
+                  data["riwayatPenyakitIbu"] ?? '';
 
               return SingleChildScrollView(
                 physics: const BouncingScrollPhysics(),
@@ -106,7 +111,7 @@ class EditDataView extends GetView<EditDataController> {
                           },
                           hint: const Text("Gender"),
                           items:
-                              ["Pilih","Laki-laki", "Perempuan"].map((gender) {
+                              ["Pilih", "Laki-laki", "Perempuan"].map((gender) {
                             return DropdownMenuItem<String>(
                               value: gender,
                               child: Text(gender),
@@ -196,6 +201,15 @@ class EditDataView extends GetView<EditDataController> {
                             textInputType: TextInputType.number,
                             controller: controller.lingkarLenganController,
                             hintText: "Lingkar Lengan",
+                            obscureText: false),
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        MyTextField(
+                            icon: const Icon(Icons.person_3),
+                            textInputType: TextInputType.text,
+                            controller: controller.catatanController,
+                            hintText: "Catatan",
                             obscureText: false),
                         const SizedBox(
                           height: 20,
@@ -331,29 +345,32 @@ class EditDataView extends GetView<EditDataController> {
                                   controller.riwayatPenyakitIbuController.text
                                       .isNotEmpty) {
                                 controller.editData(
-                                  controller.nikController.text,
-                                  controller.kkController.text,
-                                  controller.namaAnakController.text,
-                                  controller.tempatLahirController.text,
-                                  controller.tanggalLahirController.text,
-                                  int.parse(controller.umurController.text),
-                                  controller.alamatController.text,
-                                  double.parse(
-                                      controller.tinggiController.text),
-                                  double.parse(controller.beratController.text),
-                                  double.parse(
-                                      controller.lingkarKepalaController.text),
-                                  double.parse(
-                                      controller.lingkarLenganController.text),
-                                  controller.namaAyahController.text,
-                                  controller.pekerjaanAyahController.text,
-                                  controller.riwayatPenyakitAyahController.text,
-                                  controller.namaIbuController.text,
-                                  controller.pekerjaanIbuController.text,
-                                  controller.riwayatPenyakitIbuController.text,
-                                  Get.arguments,
-                                  controller.selectedGender.value
-                                );
+                                    controller.nikController.text,
+                                    controller.kkController.text,
+                                    controller.namaAnakController.text,
+                                    controller.tempatLahirController.text,
+                                    controller.tanggalLahirController.text,
+                                    int.parse(controller.umurController.text),
+                                    controller.alamatController.text,
+                                    double.parse(
+                                        controller.tinggiController.text),
+                                    double.parse(
+                                        controller.beratController.text),
+                                    double.parse(controller
+                                        .lingkarKepalaController.text),
+                                    double.parse(controller
+                                        .lingkarLenganController.text),
+                                    controller.catatanController.text,
+                                    controller.namaAyahController.text,
+                                    controller.pekerjaanAyahController.text,
+                                    controller
+                                        .riwayatPenyakitAyahController.text,
+                                    controller.namaIbuController.text,
+                                    controller.pekerjaanIbuController.text,
+                                    controller
+                                        .riwayatPenyakitIbuController.text,
+                                    Get.arguments,
+                                    controller.selectedGender.value);
                               } else {
                                 Get.defaultDialog(
                                     title: "Error",

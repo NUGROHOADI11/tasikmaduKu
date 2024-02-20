@@ -46,7 +46,7 @@ class DataScreen extends GetView<HomeController> {
                         return Card(
                             elevation: 2,
                             margin: const EdgeInsets.symmetric(
-                                vertical: 8, horizontal: 16),
+                                vertical: 3, horizontal: 16),
                             child: ListTile(
                               onTap: () {
                                 Get.toNamed(
@@ -70,6 +70,17 @@ class DataScreen extends GetView<HomeController> {
                                     ? firstWord[0].toUpperCase()
                                     : ""),
                               ),
+                              trailing: IconButton(
+                                  onPressed: () {
+                                    Get.defaultDialog(
+                                        title: "Info",
+                                        contentPadding: const EdgeInsets.all(8),
+                                        radius: 15,
+                                        middleText:
+                                            "Tekan pada bagian \"nama\" jika ingin melihat atau mengubah data",
+                                        );
+                                  },
+                                  icon: const Icon(Icons.info_outline)),
                             ));
                       },
                     );

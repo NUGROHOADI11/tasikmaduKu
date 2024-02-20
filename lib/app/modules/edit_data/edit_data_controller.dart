@@ -10,7 +10,7 @@ class EditDataController extends GetxController {
     selectedGender.value = gender;
   }
 
-Rx<DateTime> selectedDate = Rx<DateTime>(DateTime.now());
+  Rx<DateTime> selectedDate = Rx<DateTime>(DateTime.now());
   void updateSelectedDate(DateTime newDate) {
     selectedDate.value = newDate;
   }
@@ -23,7 +23,6 @@ Rx<DateTime> selectedDate = Rx<DateTime>(DateTime.now());
     return snapshot;
   }
 
-
   late TextEditingController nikController;
   late TextEditingController kkController;
   late TextEditingController namaAnakController;
@@ -35,6 +34,7 @@ Rx<DateTime> selectedDate = Rx<DateTime>(DateTime.now());
   late TextEditingController beratController;
   late TextEditingController lingkarKepalaController;
   late TextEditingController lingkarLenganController;
+  late TextEditingController catatanController;
   late TextEditingController namaAyahController;
   late TextEditingController pekerjaanAyahController;
   late TextEditingController riwayatPenyakitAyahController;
@@ -43,26 +43,26 @@ Rx<DateTime> selectedDate = Rx<DateTime>(DateTime.now());
   late TextEditingController riwayatPenyakitIbuController;
 
   void editData(
-    String nik,
-    String kk,
-    String namaAnak,
-    String tempatLahir,
-    String tanggalLahir,
-    int umur,
-    String alamat,
-    double tinggi,
-    double berat,
-    double lingkarKepala,
-    double lingkarLengan,
-    String namaAyah,
-    String pekerjaanAyah,
-    String riwayatPenyakitAyah,
-    String namaIbu,
-    String pekerjaanIbu,
-    String riwayatPenyakitIbu,
-    String docId,
-    String gender
-  ) async {
+      String nik,
+      String kk,
+      String namaAnak,
+      String tempatLahir,
+      String tanggalLahir,
+      int umur,
+      String alamat,
+      double tinggi,
+      double berat,
+      double lingkarKepala,
+      double lingkarLengan,
+      String catatan,
+      String namaAyah,
+      String pekerjaanAyah,
+      String riwayatPenyakitAyah,
+      String namaIbu,
+      String pekerjaanIbu,
+      String riwayatPenyakitIbu,
+      String docId,
+      String gender) async {
     DocumentReference docData = firestore.collection("data_anak").doc(docId);
 
     try {
@@ -80,6 +80,7 @@ Rx<DateTime> selectedDate = Rx<DateTime>(DateTime.now());
         'berat': berat,
         'lingkarKepala': lingkarKepala,
         'lingkarLengan': lingkarLengan,
+        'catatan': catatan,
         'namaAyah': namaAyah,
         'pekerjaanAyah': pekerjaanAyah,
         'riwayatPenyakitAyah': riwayatPenyakitAyah,
@@ -142,6 +143,7 @@ Rx<DateTime> selectedDate = Rx<DateTime>(DateTime.now());
     beratController = TextEditingController();
     lingkarKepalaController = TextEditingController();
     lingkarLenganController = TextEditingController();
+    catatanController = TextEditingController();
     namaAyahController = TextEditingController();
     pekerjaanAyahController = TextEditingController();
     riwayatPenyakitAyahController = TextEditingController();
@@ -164,6 +166,7 @@ Rx<DateTime> selectedDate = Rx<DateTime>(DateTime.now());
     beratController.dispose();
     lingkarKepalaController.dispose();
     lingkarLenganController.dispose();
+    catatanController.dispose();
     namaAyahController.dispose();
     pekerjaanAyahController.dispose();
     riwayatPenyakitAyahController.dispose();

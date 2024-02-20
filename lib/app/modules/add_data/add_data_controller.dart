@@ -17,7 +17,7 @@ class AddDataController extends GetxController {
   late TextEditingController kkController;
   late TextEditingController namaAnakController;
   late TextEditingController tempatLahirController;
-  late TextEditingController tanggalLahirController;
+  late TextEditingController catatanController;
   late TextEditingController umurController;
   late TextEditingController alamatController;
   late TextEditingController tinggiController;
@@ -43,6 +43,7 @@ class AddDataController extends GetxController {
       double berat,
       double lingkarKepala,
       double lingkarLengan,
+      String catatan,
       String namaAyah,
       String pekerjaanAyah,
       String riwayatPenyakitAyah,
@@ -67,6 +68,7 @@ class AddDataController extends GetxController {
         'berat': berat,
         'lingkarKepala': lingkarKepala,
         'lingkarLengan': lingkarLengan,
+        'catatan': catatan,
         'namaAyah': namaAyah,
         'pekerjaanAyah': pekerjaanAyah,
         'riwayatPenyakitAyah': riwayatPenyakitAyah,
@@ -85,7 +87,7 @@ class AddDataController extends GetxController {
             kkController.clear();
             namaAnakController.clear();
             tempatLahirController.clear();
-            tanggalLahirController.clear();
+            catatanController.clear();
             umurController.clear();
             alamatController.clear();
             tinggiController.clear();
@@ -119,7 +121,7 @@ class AddDataController extends GetxController {
     kkController = TextEditingController();
     namaAnakController = TextEditingController();
     tempatLahirController = TextEditingController();
-    tanggalLahirController = TextEditingController();
+    catatanController = TextEditingController();
     umurController = TextEditingController();
     alamatController = TextEditingController();
     tinggiController = TextEditingController();
@@ -141,7 +143,7 @@ class AddDataController extends GetxController {
     kkController.dispose();
     namaAnakController.dispose();
     tempatLahirController.dispose();
-    tanggalLahirController.dispose();
+    catatanController.dispose();
     umurController.dispose();
     alamatController.dispose();
     tinggiController.dispose();
